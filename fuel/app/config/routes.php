@@ -44,7 +44,7 @@ return array(
     'delete/(:id)' => 'welcome/delete/$1',
     'edit/(:id)' => 'welcome/edit/$1',
     'update/(:id)' => 'welcome/update/$1',
-    'login'=>'login/index',
+    'login'=>'login/login',
     'logout'=>'login/logout',
     'register'=>'register/index'
 );

@@ -34,13 +34,13 @@
 </head>
 <body>
 <div class="login-form">
-    <form action="/" method="post">
+    <form action="/login" method="post">
         <h2 class="text-center">Log in</h2>
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Username" required="required">
+            <input type="text" name="email" class="form-control" placeholder="username" required="required">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" placeholder="Password" required="required">
+            <input type="password" name="password" class="form-control" placeholder="password" required="required">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">Log in</button>

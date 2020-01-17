@@ -21,13 +21,44 @@
  */
 class Controller_login extends Controller
 {
-    public function action_index()
+    public function action_login()
 
     {
-        $person =\Model_Person::find('all');
+        if (\Input::method() == 'POST')
+        {
+            echo \Input::param('username');
+
+            // check the credentials.
+            if (\Auth::instance()->login(\Input::param('username'), \Input::param('password')))
+            {
+
+                // did the user want to be remembered?
+                if (\Input::param('remember', false))
+                {
+                    // create the remember-me cookie
+                    \Auth::remember_me();
+                }
+                else
+                {
+                    // delete the remember-me cookie if present
+                    \Auth::dont_remember_me();
+                }
+
+                // logged in, go back to the page the user came from, or the
+                // application dashboard if no previous page can be detected
+                \Response::redirect_back('dashboard');
+            }
+            else
+            {
+                // login failed, show an error message
+                //\Messages::error(__('login.failure'));
+            }
+        }
+
 
         return View::forge('login');
     }
+
     public  function action_logout()
     {
        return \Response::redirect('/login');
