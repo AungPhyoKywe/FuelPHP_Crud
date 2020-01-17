@@ -14,8 +14,7 @@
 
     <div class="container">
 
-
-        <h3>First FuelPHP CRUD</h3><br><br>
+        <h3>First FuelPHP CRUD</h3><a class="btn-sm btn-warning" href="/logout">Logout</a><br><br>
         <div class="card shadow p-3 mb-5 bg-white rounded">
             <div class="card-header">
         <a href="/add" class="btn-sm btn-primary">Add New</a>
