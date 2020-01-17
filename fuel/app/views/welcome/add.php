@@ -13,13 +13,28 @@
 
 <div class="container">
     <h3>First FuelPHP CRUD</h3><br><br>
+    <div class="card shadow p-3 mb-5 bg-white rounded">
+        <div class="card-header">
+            Add Student
+        </div>
+        <div class="card-body">
     <form class="form-group"enctype="multipart/form-data"method="post"action="/add">
+        <div class="container">
         <strong>Name</strong>
         <input class="form-control" name="name" placeholder="name">
+        <span class="text-danger">please fill name</span>
+        </div>
+        <div class="container">
         <strong>Age:</strong>
         <input class="form-control" name="age" placeholder="age">
+            <span class="text-danger">please fill age</span>
+        </div>
+        <div class="container">
         <strong>Gender</strong>
-        <input class="form-control" name="gender" placeholder="gender">
+        <select class="form-control"name="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
         <strong>Image:</strong><br>
         <img src="" id="profile-img-tag" style="width: 150px;height: 150px;border-bottom-color: #0c525d" /><br><br>
         <input class="form-group  btn-sm btn-link" type="file" name="image" id="profile-img">
@@ -27,7 +42,9 @@
     <a href="/" class="btn btn-warning">Back to List</a>
     <button type="submit" class="btn btn-success">Save</button>
     </form>
-
+        </div>
+    </div>
+    </div>
 </div>
 
 <script type="text/javascript">

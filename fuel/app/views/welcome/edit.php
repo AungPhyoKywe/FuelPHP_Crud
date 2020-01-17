@@ -13,18 +13,49 @@
 
 <div class="container">
     <h3>First FuelPHP CRUD</h3><br><br>
-
+    <div class="card shadow p-3 mb-5 bg-white rounded">
+        <div class="card-header">
+            Edit Student
+        </div>
+        <div class="card-body">
     <form class="form-group" action="/edit/<?php echo $person->id?>"method="post"enctype="multipart/form-data">
 
-        <label>Name</label>
+        <strong>Name</strong>
         <input class="form-control" value="<?php echo $person->name?>" name="name" placeholder="name">
-        <label>Age:</label>
+        <strong>Age:</strong>
         <input class="form-control" value="<?php echo $person->age?>"name="age" placeholder="age">
-        <label>Gender</label>
-        <input class="form-control"value="<?php echo $person->gender?>" name="gender" placeholder="gender">
+        <strong>Gender</strong>
+        <select name="gender"class="form-control">
+            <?php  if ($person->gender == 'male') {?>
+            <option selected value="male">Male</option>
+            <option value="female">Female</option>
+
+            <?php } if ($person->gender == 'female'){?>
+                <option selected value="female">Female</option>
+                <option value="male">Male</option>
+            <?php }?>
+        </select>
+        <strong>Image:</strong><br>
+        <img src="/assets/images/<?php echo $person->image?>" id="profile-img-tag" style="width: 150px;height: 150px;border-bottom-color: #0c525d" /><br><br>
+        <input class="form-group  btn-sm btn-link" type="file" name="image" id="profile-img">
         <br>
         <a href="/" class="btn btn-warning">Back to List</a>
         <button type="submit" class="btn btn-success">Update</button>
     </form>
-
+        </div>
+    </div>
 </div>
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#profile-img-tag').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#profile-img").change(function(){
+        readURL(this);
+    });
+</script>

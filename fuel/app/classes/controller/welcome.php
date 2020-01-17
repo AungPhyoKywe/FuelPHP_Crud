@@ -119,7 +119,21 @@ class Controller_Welcome extends Controller
             $product = \Model_Person::forge(\Input::all());
 
             try {
+                $config = array(
+                    'path' => DOCROOT.DS.'assets/images',
+                    'max_size' => 1048576,
+                    'randomize' => true,
+                    'ext_whitelist' => array('img', 'jpg', 'jpeg', 'gif', 'png'),
+                );
 
+                \Upload::process($config);
+
+                if (\Upload::is_valid()) {
+                    \Upload::save();
+                    $value = \Upload::get_files();
+                    //var_dump($path);
+                    $product->image =  $value[0]['saved_as'];
+                }
                 $product->save();
 
                 \Response::redirect('/');
