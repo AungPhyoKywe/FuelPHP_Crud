@@ -26,7 +26,8 @@ class Controller_login extends Controller
     {
         if (\Input::method() == 'POST')
         {
-            echo \Input::param('username');
+            \Response::redirect_back('/');
+           // echo \Input::param('username');
 
             // check the credentials.
             if (\Auth::instance()->login(\Input::param('username'), \Input::param('password')))
@@ -46,7 +47,7 @@ class Controller_login extends Controller
 
                 // logged in, go back to the page the user came from, or the
                 // application dashboard if no previous page can be detected
-                \Response::redirect_back('dashboard');
+                \Response::redirect_back('_root_');
             }
             else
             {
